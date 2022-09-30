@@ -87,7 +87,7 @@ const JobItemDetails = () => {
           <a href={companyWebsiteUrl}>Visit</a>
           <h1>Skills</h1>
           <ul className="skill-cards-container mb-2">
-            {skills?.map((item: any) => (
+            {skills?.map((item) => (
               <li className="skill-card flex-row" key={item.name}>
                 <img
                   alt={item.name}
@@ -104,7 +104,7 @@ const JobItemDetails = () => {
               <p>{lifeAtCompany?.description}</p>
               <img
                 alt="life at company"
-                src={lifeAtCompany.image_url}
+                src={lifeAtCompany?.image_url}
                 className="ml-1"
               />
             </div>
@@ -113,7 +113,7 @@ const JobItemDetails = () => {
         <li>
           <h1 className="mt-3 mb-0">Similar Jobs</h1>
           <ul className="similar-job-items-container">
-            {similarJobs?.map((item: any) => (
+            {similarJobs?.map((item) => (
               <li className="similar-job-item-card" key={item.id}>
                 <div className="flex-row mb-2">
                   <img

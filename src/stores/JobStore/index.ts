@@ -3,6 +3,7 @@ import apiConst from "../../constants/apiConst";
 import { getFetchOptions } from "../../utils/getFetchOptions";
 import makeAsyncCall from "../../utils/makeAsyncCall";
 import Job from "../Models/Job";
+import { JobType } from "../Models/Job/types";
 import ProfileDataModel from "../Models/ProfileData";
 
 class JobStore {
@@ -22,12 +23,12 @@ class JobStore {
   }
 
   @action.bound
-  setJobsData(data: { jobs: Job[] }) {
-    this.jobsData = data.jobs.map((j: any) => new Job(j));
+  setJobsData(data: { jobs: JobType[] }) {
+    this.jobsData = data.jobs.map((j: JobType) => new Job(j));
   }
 
   @action.bound
-  onJobsApiSuccess(data: { jobs: Job[] }) {
+  onJobsApiSuccess(data: { jobs: JobType[] }) {
     this.setJobsData(data);
     this.setJobsApiStatus(apiConst.success);
   }

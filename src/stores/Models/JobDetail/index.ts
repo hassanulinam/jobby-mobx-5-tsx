@@ -1,4 +1,6 @@
 import SimilarJob from "../SimilarJob";
+import { SimilarJobType } from "../SimilarJob/types";
+import { JobDetailsResponse } from "./types";
 
 class JobDetail {
   similarJobs: SimilarJob[] = [];
@@ -8,14 +10,20 @@ class JobDetail {
   employmentType: string;
   id: string;
   jobDescription: string;
-  lifeAtCompany: any;
+  lifeAtCompany: { description: string; image_url: string };
   location: string;
   packagePerAnnum: string;
   rating: string;
   skills: { name: string; image_url: string }[];
   title: string;
 
-  constructor({ job_details, similar_jobs }: any) {
+  constructor({
+    job_details,
+    similar_jobs,
+  }: {
+    job_details: JobDetailsResponse;
+    similar_jobs: SimilarJobType[];
+  }) {
     const {
       company_logo_url,
       company_website_url,
@@ -42,7 +50,9 @@ class JobDetail {
     this.skills = skills;
     this.title = title;
 
-    this.similarJobs = similar_jobs.map((sj: SimilarJob) => new SimilarJob(sj));
+    this.similarJobs = similar_jobs.map(
+      (sj: SimilarJobType) => new SimilarJob(sj)
+    );
   }
 }
 

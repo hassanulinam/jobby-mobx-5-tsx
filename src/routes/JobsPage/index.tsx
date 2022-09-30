@@ -43,9 +43,7 @@ const Jobs = () => {
             <input
               type="checkbox"
               id={item.employmentTypeId}
-              onChange={(e: any) =>
-                jobStore.addOrRemoveJobTypeFilters(e.target.id)
-              }
+              onChange={(e) => jobStore.addOrRemoveJobTypeFilters(e.target.id)}
             />
             <label htmlFor={item.employmentTypeId}>{item.label}</label>
           </li>
@@ -106,7 +104,7 @@ const Jobs = () => {
     if (jobsData.length > 0)
       return (
         <ul className="job-cards-container">
-          {jobsData.map((item: any) => (
+          {jobsData.map((item) => (
             <JobItem key={item.id} details={item} />
           ))}
         </ul>

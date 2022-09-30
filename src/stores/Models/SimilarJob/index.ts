@@ -1,3 +1,5 @@
+import { SimilarJobType } from "./types";
+
 class SimilarJob {
   id: string;
   title: string;
@@ -15,7 +17,7 @@ class SimilarJob {
     location,
     rating,
     title,
-  }: any) {
+  }: SimilarJobType) {
     this.id = id;
     this.title = title;
     this.companyLogoUrl = company_logo_url;

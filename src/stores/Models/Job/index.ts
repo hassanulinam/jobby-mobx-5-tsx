@@ -3,9 +3,13 @@ import apiConst from "../../../constants/apiConst";
 import { getFetchOptions } from "../../../utils/getFetchOptions";
 import makeAsyncCall from "../../../utils/makeAsyncCall";
 import JobDetail from "../JobDetail";
+import { JobDetailsResponse } from "../JobDetail/types";
+import { SimilarJobType } from "../SimilarJob/types";
+import { JobType } from "./types";
 
-interface responseData {
-  data: { [key: string]: { [key: string]: string } };
+export interface responseData {
+  job_details: JobDetailsResponse;
+  similar_jobs: SimilarJobType[];
 }
 
 class Job {
@@ -31,9 +35,7 @@ class Job {
     employment_type,
     job_description,
     package_per_annum,
-  }: {
-    [key: string]: string;
-  }) {
+  }: JobType) {
     this.id = id;
     this.title = title;
     this.rating = rating;

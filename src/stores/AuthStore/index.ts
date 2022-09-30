@@ -2,6 +2,7 @@ import { action, observable } from "mobx";
 import apiConst from "../../constants/apiConst";
 import { deleteAccessToken, setAccessToken } from "../../utils/accessToken";
 import makeAsyncCall from "../../utils/makeAsyncCall";
+import { requestObj, responseData } from "./types";
 
 class AuthStore {
   @observable loginErr = "";
@@ -14,7 +15,7 @@ class AuthStore {
   }
 
   @action
-  onLoginApiSuccess = (onSuccess: () => void) => (data: any) => {
+  onLoginApiSuccess = (onSuccess: () => void) => (data: responseData) => {
     if (data.jwt_token) {
       this.saveToken(data.jwt_token);
       this.setApiStatus(apiConst.success);
@@ -23,14 +24,14 @@ class AuthStore {
   };
 
   @action
-  onLoginApiFailure(response: any) {
+  onLoginApiFailure(response: responseData) {
     const data = response;
     this.loginErr = `*${data.error_msg}`;
     this.setApiStatus(apiConst.failure);
   }
 
   @action.bound
-  async onLogin({ username, password }: any, onSuccess: any) {
+  async onLogin({ username, password }: requestObj, onSuccess: () => void) {
     const url = "https://apis.ccbp.in/login";
     const options = {
       method: "POST",

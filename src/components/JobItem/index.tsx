@@ -1,11 +1,12 @@
 import { BsBriefcaseFill, BsStarFill } from "react-icons/bs";
 import { MdLocationOn } from "react-icons/md";
 import { useHistory } from "react-router-dom";
+import Job from "../../stores/Models/Job";
 
 import "./index.css";
 
 interface Props {
-  details: { [key: string]: string };
+  details: Job;
 }
 
 const JobItem = ({ details }: Props) => {
