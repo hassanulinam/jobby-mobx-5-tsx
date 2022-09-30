@@ -1,5 +1,16 @@
+interface requestObj {
+  url: string;
+  options: {
+    method: string;
+    headers?: {
+      "Content-Type": string;
+      Authorization: string;
+    };
+  };
+}
+
 async function makeAsyncCall(
-  { url, options }: any,
+  { url, options }: requestObj,
   onSuccess: any,
   onFailure: any
 ) {
