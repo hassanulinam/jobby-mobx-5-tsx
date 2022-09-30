@@ -13,7 +13,7 @@ class JobStore {
   @observable selectedEmpTypes: string[] = [];
   @observable salaryRange = "";
   @observable searchKey = "";
-  @observable apiErrors: any = null;
+  @observable apiErrors: Error | string = "";
 
   // ========== Jobs api ===================
   @action.bound
@@ -22,18 +22,18 @@ class JobStore {
   }
 
   @action.bound
-  setJobsData(data: any) {
+  setJobsData(data: { jobs: Job[] }) {
     this.jobsData = data.jobs.map((j: any) => new Job(j));
   }
 
   @action.bound
-  onJobsApiSuccess(data: any) {
+  onJobsApiSuccess(data: { jobs: Job[] }) {
     this.setJobsData(data);
     this.setJobsApiStatus(apiConst.success);
   }
 
   @action.bound
-  onJobsApiFailure(err: any) {
+  onJobsApiFailure(err: Error) {
     this.apiErrors = err.message;
     this.setJobsApiStatus(apiConst.failure);
   }
@@ -64,7 +64,7 @@ class JobStore {
   }
 
   @action.bound
-  setProfileData(data: any) {
+  setProfileData(data: { [key: string]: { [key: string]: string } }) {
     this.profileData = new ProfileDataModel(
       data.profile_details.name,
       data.profile_details.profile_image_url,
@@ -73,13 +73,13 @@ class JobStore {
   }
 
   @action.bound
-  onProfileApiSuccess(data: any) {
+  onProfileApiSuccess(data: { [key: string]: { [key: string]: string } }) {
     this.setProfileData(data);
     this.setProfileApiStatus(apiConst.success);
   }
 
   @action.bound
-  onProfileApiFailure(err: any) {
+  onProfileApiFailure(err: { message: string }) {
     this.apiErrors = err.message;
     this.setProfileApiStatus(apiConst.failure);
   }
@@ -117,7 +117,7 @@ class JobStore {
     this.selectedEmpTypes = [];
     this.salaryRange = "";
     this.searchKey = "";
-    this.apiErrors = null;
+    this.apiErrors = "";
   }
 }
 

@@ -23,15 +23,15 @@ const Jobs = () => {
     jobStore.getJobsData();
   }, [jobStore.salaryRange, jobStore.selectedEmpTypes.length]);
 
-  const changeSearchInput = (e: any) => {
+  const changeSearchInput = (e: React.FormEvent<HTMLInputElement>) => {
     runInAction(() => {
-      jobStore.searchKey = e.target.value;
+      jobStore.searchKey = e.currentTarget.value;
     });
   };
 
-  const onChangeSalaryRange = (e: any) => {
+  const onChangeSalaryRange = (e: React.FormEvent<HTMLInputElement>) => {
     runInAction(() => {
-      jobStore.salaryRange = e.target.value;
+      jobStore.salaryRange = e.currentTarget.value;
     });
   };
 

@@ -1,7 +1,11 @@
 import React from "react";
 import "./index.css";
 
-const FailureView = ({ retryMethod }: any) => {
+interface Props {
+  retryMethod: () => void;
+}
+
+const FailureView = ({ retryMethod }: Props) => {
   return (
     <div className="failure-view-container">
       <img

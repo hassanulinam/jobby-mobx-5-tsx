@@ -1,5 +1,5 @@
 import { observer } from "mobx-react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useStores } from "../../hooks/useStores";
 import { getAccessToken } from "../../utils/accessToken";
@@ -12,14 +12,14 @@ const Login = () => {
   const { authStore } = useStores();
   const history = useHistory();
 
-  const onChangeName = (e: any) => {
-    setUsername(e.target.value);
+  const onChangeName = (e: React.FormEvent<HTMLInputElement>) => {
+    setUsername(e.currentTarget.value);
   };
-  const onPasswordChange = (e: any) => {
-    setPassword(e.target.value);
+  const onPasswordChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setPassword(e.currentTarget.value);
   };
 
-  const onLogin = (e: any) => {
+  const onLogin = (e: React.SyntheticEvent) => {
     e.preventDefault();
     authStore.onLogin({ username, password }, () => {
       history.replace("/");

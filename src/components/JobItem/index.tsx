@@ -4,7 +4,11 @@ import { useHistory } from "react-router-dom";
 
 import "./index.css";
 
-const JobItem = ({ details }: any) => {
+interface Props {
+  details: { [key: string]: string };
+}
+
+const JobItem = ({ details }: Props) => {
   const {
     id,
     companyLogoUrl,

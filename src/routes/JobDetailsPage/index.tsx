@@ -12,7 +12,7 @@ import FailureView from "../../components/FailureView";
 
 const JobItemDetails = () => {
   const { jobStore } = useStores();
-  const params: any = useParams();
+  const params = useParams<{ id: string }>();
 
   const getCurrentJob = () => {
     const { id } = params;
@@ -163,7 +163,7 @@ const JobItemDetails = () => {
       case apiConst.success:
         return renderJobDetailsView();
       case apiConst.failure:
-        return <FailureView retryMethod={currentJob?.getJobDetails} />;
+        return <FailureView retryMethod={() => currentJob?.getJobDetails()} />;
       default:
         return null;
     }

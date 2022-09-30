@@ -4,6 +4,10 @@ import { getFetchOptions } from "../../../utils/getFetchOptions";
 import makeAsyncCall from "../../../utils/makeAsyncCall";
 import JobDetail from "../JobDetail";
 
+interface responseData {
+  data: { [key: string]: { [key: string]: string } };
+}
+
 class Job {
   id: string;
   @observable title: string;
@@ -16,7 +20,7 @@ class Job {
 
   @observable jobDetails: JobDetail | null = null;
   @observable jobDetailsApi = apiConst.initial;
-  @observable apiErrors: any = null;
+  @observable apiErrors: Error | string = "";
 
   constructor({
     id,
@@ -27,7 +31,9 @@ class Job {
     employment_type,
     job_description,
     package_per_annum,
-  }: any) {
+  }: {
+    [key: string]: string;
+  }) {
     this.id = id;
     this.title = title;
     this.rating = rating;
@@ -45,17 +51,17 @@ class Job {
   }
 
   @action.bound
-  setJobDetailsData(data: any) {
+  setJobDetailsData(data: responseData) {
     this.jobDetails = new JobDetail(data);
   }
 
   @action.bound
-  onJobDetailsApiSuccess(data: any) {
+  onJobDetailsApiSuccess(data: responseData) {
     this.setJobDetailsData(data);
     this.setApiStatus(apiConst.success);
   }
   @action.bound
-  onJobDetailsApiFailure(err: any) {
+  onJobDetailsApiFailure(err: Error | string) {
     this.setApiStatus(apiConst.failure);
   }
 

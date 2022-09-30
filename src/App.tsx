@@ -5,9 +5,7 @@ import Jobs from "./routes/JobsPage";
 import JobItemDetails from "./routes/JobDetailsPage";
 import NotFound from "./routes/NotFoundPage";
 import Home from "./routes/HomePage";
-
 import Login from "./routes/LoginPage";
-import { observer } from "mobx-react";
 import "./App.css";
 
 function App() {
@@ -24,4 +22,4 @@ function App() {
   );
 }
 
-export default observer(App);
+export default App;

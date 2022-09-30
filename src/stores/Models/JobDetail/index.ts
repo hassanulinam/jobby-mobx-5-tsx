@@ -12,7 +12,7 @@ class JobDetail {
   location: string;
   packagePerAnnum: string;
   rating: string;
-  skills: any;
+  skills: { name: string; image_url: string }[];
   title: string;
 
   constructor({ job_details, similar_jobs }: any) {
@@ -42,7 +42,7 @@ class JobDetail {
     this.skills = skills;
     this.title = title;
 
-    this.similarJobs = similar_jobs.map((sj: any) => new SimilarJob(sj));
+    this.similarJobs = similar_jobs.map((sj: SimilarJob) => new SimilarJob(sj));
   }
 }
 
