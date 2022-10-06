@@ -1,7 +1,7 @@
 import { BsBriefcaseFill, BsStarFill } from "react-icons/bs";
 import { MdLocationOn } from "react-icons/md";
 import { ThreeDots } from "react-loader-spinner";
-import apiConst from "../../constants/apiConst";
+import ApiConstType from "../../constants/apiConst";
 import { useStores } from "../../hooks/useStores";
 import "./index.css";
 import { observer } from "mobx-react";
@@ -158,11 +158,11 @@ const JobItemDetails = () => {
     const jobDetailsApi = currentJob?.jobDetailsApi;
 
     switch (jobDetailsApi) {
-      case apiConst.inProgress:
+      case ApiConstType.inProgress:
         return renderLoadingView();
-      case apiConst.success:
+      case ApiConstType.success:
         return renderJobDetailsView();
-      case apiConst.failure:
+      case ApiConstType.failure:
         return <FailureView retryMethod={() => currentJob?.getJobDetails()} />;
       default:
         return null;

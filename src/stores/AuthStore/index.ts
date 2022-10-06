@@ -1,16 +1,16 @@
 import { action, observable } from "mobx";
-import apiConst from "../../constants/apiConst";
+import ApiConstType from "../../constants/apiConst";
 import { deleteAccessToken, setAccessToken } from "../../utils/accessToken";
 import makeAsyncCall from "../../utils/makeAsyncCall";
 import { requestObj, responseData } from "./types";
 
 class AuthStore {
   @observable loginErr = "";
-  @observable apiStatus = apiConst.initial;
+  @observable apiStatus = ApiConstType.initial;
 
   // ====================================================
   @action
-  setApiStatus(status: string) {
+  setApiStatus(status: ApiConstType) {
     this.apiStatus = status;
   }
 
@@ -18,7 +18,7 @@ class AuthStore {
   onLoginApiSuccess = (onSuccess: () => void) => (data: responseData) => {
     if (data.jwt_token) {
       this.saveToken(data.jwt_token);
-      this.setApiStatus(apiConst.success);
+      this.setApiStatus(ApiConstType.success);
       onSuccess();
     } else this.loginErr = `*${data.error_msg}`;
   };
@@ -27,7 +27,7 @@ class AuthStore {
   onLoginApiFailure(response: responseData) {
     const data = response;
     this.loginErr = `*${data.error_msg}`;
-    this.setApiStatus(apiConst.failure);
+    this.setApiStatus(ApiConstType.failure);
   }
 
   @action.bound
@@ -59,7 +59,7 @@ class AuthStore {
   @action
   resetStore() {
     this.loginErr = "";
-    this.apiStatus = apiConst.initial;
+    this.apiStatus = ApiConstType.initial;
   }
 }
 

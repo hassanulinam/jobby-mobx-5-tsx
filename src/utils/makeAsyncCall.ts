@@ -11,13 +11,13 @@ interface requestObj {
 
 async function makeAsyncCall(
   { url, options }: requestObj,
-  onSuccess: any,
-  onFailure: any
+  onSuccess: (data: any) => void,
+  onFailure: (err: any) => void
 ) {
   fetch(url, options)
     .then((response) => response.json())
     .then((data) => onSuccess(data))
-    .catch((err: any) => {
+    .catch((err) => {
       onFailure(err);
     });
 }

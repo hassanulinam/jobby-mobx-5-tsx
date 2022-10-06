@@ -1,5 +1,5 @@
 import { action, observable } from "mobx";
-import apiConst from "../../../constants/apiConst";
+import ApiConstType from "../../../constants/apiConst";
 import { getFetchOptions } from "../../../utils/getFetchOptions";
 import makeAsyncCall from "../../../utils/makeAsyncCall";
 import JobDetail from "../JobDetail";
@@ -23,7 +23,7 @@ class Job {
   @observable packagePerAnnum: string;
 
   @observable jobDetails: JobDetail | null = null;
-  @observable jobDetailsApi = apiConst.initial;
+  @observable jobDetailsApi = ApiConstType.initial;
   @observable apiErrors: Error | string = "";
 
   constructor({
@@ -48,7 +48,7 @@ class Job {
 
   // ======== JobDetails api ==============
   @action.bound
-  setApiStatus(status: string) {
+  setApiStatus(status: ApiConstType) {
     this.jobDetailsApi = status;
   }
 
@@ -60,16 +60,16 @@ class Job {
   @action.bound
   onJobDetailsApiSuccess(data: responseData) {
     this.setJobDetailsData(data);
-    this.setApiStatus(apiConst.success);
+    this.setApiStatus(ApiConstType.success);
   }
   @action.bound
   onJobDetailsApiFailure(err: Error | string) {
-    this.setApiStatus(apiConst.failure);
+    this.setApiStatus(ApiConstType.failure);
   }
 
   @action.bound
   async getJobDetails() {
-    this.setApiStatus(apiConst.inProgress);
+    this.setApiStatus(ApiConstType.inProgress);
     const url = `https://apis.ccbp.in/jobs/${this.id}`;
     const options = getFetchOptions();
     await makeAsyncCall(

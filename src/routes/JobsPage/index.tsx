@@ -3,7 +3,7 @@ import { ThreeDots } from "react-loader-spinner";
 import { useStores } from "../../hooks/useStores";
 import { employmentTypes, salaryRanges } from "../../constants/filtersData";
 import { BsSearch } from "react-icons/bs";
-import apiConst from "../../constants/apiConst";
+import ApiConstType from "../../constants/apiConst";
 import { runInAction } from "mobx";
 import { useEffect } from "react";
 import { observer } from "mobx-react";
@@ -126,11 +126,11 @@ const Jobs = () => {
     const { jobsApiStatus } = jobStore;
 
     switch (jobsApiStatus) {
-      case apiConst.success:
+      case ApiConstType.success:
         return renderJobResultsView();
-      case apiConst.failure:
+      case ApiConstType.failure:
         return <FailureView retryMethod={jobStore.getJobsData} />;
-      case apiConst.inProgress:
+      case ApiConstType.inProgress:
         return <div className="loader-view-wrapper">{renderLoadingView()}</div>;
       default:
         return null;
@@ -141,7 +141,7 @@ const Jobs = () => {
     const { profileData, profileApiStatus } = jobStore;
 
     switch (profileApiStatus) {
-      case apiConst.success:
+      case ApiConstType.success:
         return (
           <div className="profile-card-wrapper">
             <div className="profile-card-container">
@@ -155,7 +155,7 @@ const Jobs = () => {
             </div>
           </div>
         );
-      case apiConst.failure:
+      case ApiConstType.failure:
         return (
           <div className="profile-card-wrapper">
             <button
@@ -167,7 +167,7 @@ const Jobs = () => {
             </button>
           </div>
         );
-      case apiConst.inProgress:
+      case ApiConstType.inProgress:
         return (
           <div className="profile-card-wrapper">{renderLoadingView()}</div>
         );

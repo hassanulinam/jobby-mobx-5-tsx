@@ -6,7 +6,7 @@ import { getAccessToken } from "../../utils/accessToken";
 import "./index.css";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState("");
 
   const { authStore } = useStores();

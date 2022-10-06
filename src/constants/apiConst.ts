@@ -1,8 +1,8 @@
-const apiConst = {
-  initial: "INITIAL",
-  success: "SUCCESS",
-  failure: "FAILURE",
-  inProgress: "LOADING",
-};
+enum ApiConstType {
+  initial = "INITIAL",
+  success = "SUCCESS",
+  failure = "FAILURE",
+  inProgress = "LOADING",
+}
 
-export default apiConst;
+export default ApiConstType;

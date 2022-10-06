@@ -1,5 +1,5 @@
 import { action, observable } from "mobx";
-import apiConst from "../../constants/apiConst";
+import ApiConstType from "../../constants/apiConst";
 import { getFetchOptions } from "../../utils/getFetchOptions";
 import makeAsyncCall from "../../utils/makeAsyncCall";
 import Job from "../Models/Job";
@@ -7,8 +7,8 @@ import { JobType } from "../Models/Job/types";
 import ProfileDataModel from "../Models/ProfileData";
 
 class JobStore {
-  @observable jobsApiStatus = apiConst.initial;
-  @observable profileApiStatus = apiConst.initial;
+  @observable jobsApiStatus = ApiConstType.initial;
+  @observable profileApiStatus = ApiConstType.initial;
   @observable jobsData: Job[] = [];
   @observable profileData: ProfileDataModel | null = null;
   @observable selectedEmpTypes: string[] = [];
@@ -18,7 +18,7 @@ class JobStore {
 
   // ========== Jobs api ===================
   @action.bound
-  setJobsApiStatus(status: string) {
+  setJobsApiStatus(status: ApiConstType) {
     this.jobsApiStatus = status;
   }
 
@@ -30,18 +30,18 @@ class JobStore {
   @action.bound
   onJobsApiSuccess(data: { jobs: JobType[] }) {
     this.setJobsData(data);
-    this.setJobsApiStatus(apiConst.success);
+    this.setJobsApiStatus(ApiConstType.success);
   }
 
   @action.bound
   onJobsApiFailure(err: Error) {
     this.apiErrors = err.message;
-    this.setJobsApiStatus(apiConst.failure);
+    this.setJobsApiStatus(ApiConstType.failure);
   }
 
   @action.bound
   async getJobsData() {
-    this.setJobsApiStatus(apiConst.inProgress);
+    this.setJobsApiStatus(ApiConstType.inProgress);
     const { selectedEmpTypes, salaryRange, searchKey } = this;
     const queryParams = [];
     queryParams.push(`employment_type=${selectedEmpTypes.join(",")}`);
@@ -60,7 +60,7 @@ class JobStore {
 
   // ======== Profile api ==============
   @action
-  setProfileApiStatus(status: string) {
+  setProfileApiStatus(status: ApiConstType) {
     this.profileApiStatus = status;
   }
 
@@ -76,18 +76,18 @@ class JobStore {
   @action.bound
   onProfileApiSuccess(data: { [key: string]: { [key: string]: string } }) {
     this.setProfileData(data);
-    this.setProfileApiStatus(apiConst.success);
+    this.setProfileApiStatus(ApiConstType.success);
   }
 
   @action.bound
   onProfileApiFailure(err: { message: string }) {
     this.apiErrors = err.message;
-    this.setProfileApiStatus(apiConst.failure);
+    this.setProfileApiStatus(ApiConstType.failure);
   }
 
   @action.bound
   async getProfileData() {
-    this.setProfileApiStatus(apiConst.inProgress);
+    this.setProfileApiStatus(ApiConstType.inProgress);
     const options = getFetchOptions();
     const url = "https://apis.ccbp.in/profile";
 
@@ -111,8 +111,8 @@ class JobStore {
 
   @action
   resetStore() {
-    this.jobsApiStatus = apiConst.initial;
-    this.profileApiStatus = apiConst.initial;
+    this.jobsApiStatus = ApiConstType.initial;
+    this.profileApiStatus = ApiConstType.initial;
     this.jobsData = [];
     this.profileData = null;
     this.selectedEmpTypes = [];
