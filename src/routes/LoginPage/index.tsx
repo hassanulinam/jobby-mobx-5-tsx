@@ -1,11 +1,15 @@
 import { observer } from "mobx-react";
 import React, { useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 import { useStores } from "../../hooks/useStores";
 import { getAccessToken } from "../../utils/accessToken";
 import "./index.css";
 
 const Login = () => {
+  const { t } = useTranslation();
+  const ns = "login";
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState("");
 
@@ -34,7 +38,7 @@ const Login = () => {
         className="login-website-logo"
       />
       <label htmlFor="usernameInput" className="login-form-label">
-        USERNAME
+        {t("username", { ns })}
       </label>
       <input
         id="usernameInput"
@@ -44,7 +48,7 @@ const Login = () => {
         onChange={onChangeName}
       />
       <label htmlFor="passwordInput" className="login-form-label">
-        PASSWORD
+        {t("password", { ns })}
       </label>
       <input
         id="passwordInput"
@@ -55,7 +59,7 @@ const Login = () => {
         onChange={onPasswordChange}
       />
       <button type="submit" className="login-btn">
-        Login
+        {t("login", { ns })}
       </button>
       <p className="error-message">{authStore.loginErr}</p>
     </form>

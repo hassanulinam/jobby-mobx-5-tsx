@@ -1,0 +1,11 @@
+{
+  "typeOfEmployment": "Type Of Employment",
+  "employmentType": {
+    "FULLTIME": "Full Time",
+    "PARTTIME": "Part Time",
+    "FREELANCE": "Freelance",
+    "INTERNSHIP": "Internship"
+  },
+  "salaryRange": "{{count}} and above",
+  "search": "Search"
+}

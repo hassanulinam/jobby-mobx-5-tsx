@@ -1,12 +1,23 @@
-import { Link, useHistory, withRouter } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { BsBriefcaseFill } from "react-icons/bs";
 import { IoMdHome, IoMdExit } from "react-icons/io";
 import { useStores } from "../../hooks/useStores";
 import "./index.css";
 import { observer } from "mobx-react";
 import { useClearStores } from "../../hooks/useClearStores";
+import { useTranslation } from "react-i18next";
+import i18n from "i18next";
+import { useState } from "react";
+
+enum Language {
+  english = "en",
+  telugu = "te",
+}
 
 const Header = () => {
+  const { t } = useTranslation();
+  const ns = "header";
+  const [lng, changeLng] = useState("en");
   const { authStore } = useStores();
   const history = useHistory();
   const clearStores = useClearStores();
@@ -15,6 +26,11 @@ const Header = () => {
     authStore.onLogout();
     clearStores();
     history.replace("/login");
+  };
+
+  const onChangeLng = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    changeLng(e.currentTarget.value);
+    i18n.changeLanguage(e.target.value);
   };
 
   return (
@@ -31,11 +47,11 @@ const Header = () => {
         </li>
         <li className="header-nav-item-container">
           <Link to="/" className="nav-link-item">
-            <p className="d-none d-md-inline mr-2">Home</p>
+            <p className="d-none d-md-inline mr-2">{t("home", { ns })}</p>
             <IoMdHome size="30" className="d-inline d-md-none" />
           </Link>
           <Link to="/jobs" className="nav-link-item">
-            <p className="d-none d-md-inline">Jobs</p>
+            <p className="d-none d-md-inline">{t("jobs", { ns })}</p>
             <BsBriefcaseFill size="28" className="d-inline d-md-none" />
           </Link>
           <button
@@ -45,6 +61,10 @@ const Header = () => {
           >
             <IoMdExit size="30" color="#ffffff" />
           </button>
+          <select value={lng} onChange={onChangeLng}>
+            <option value={Language.english}>English</option>
+            <option value={Language.telugu}>Telugu</option>
+          </select>
         </li>
         <li>
           <button
@@ -52,7 +72,7 @@ const Header = () => {
             className="logout-btn d-none d-md-inline"
             onClick={onLogout}
           >
-            Logout
+            {t("logout", { ns })}
           </button>
         </li>
       </ul>
@@ -60,4 +80,4 @@ const Header = () => {
   );
 };
 
-export default withRouter(observer(Header));
+export default observer(Header);

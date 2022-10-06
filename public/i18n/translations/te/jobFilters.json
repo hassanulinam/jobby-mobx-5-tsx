@@ -1,0 +1,11 @@
+{
+  "typeOfEmployment": "ఉద్యోగం రకం",
+  "employmentType": {
+    "FULLTIME": "పూర్తి సమయం",
+    "PARTTIME": "పార్ట్ టైమ్",
+    "FREELANCE": "ఫ్రీలాన్స్",
+    "INTERNSHIP": "ఇంటర్న్"
+  },
+  "salaryRange": "{{count}}LPA మరియు పైన",
+  "search": "శోధించండి"
+}

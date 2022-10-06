@@ -3,6 +3,8 @@ import { MdLocationOn } from "react-icons/md";
 import { ThreeDots } from "react-loader-spinner";
 import ApiConstType from "../../constants/apiConst";
 import { useStores } from "../../hooks/useStores";
+import { useTranslation } from "react-i18next";
+
 import "./index.css";
 import { observer } from "mobx-react";
 import { useEffect } from "react";
@@ -11,6 +13,8 @@ import Header from "../../components/Header";
 import FailureView from "../../components/FailureView";
 
 const JobItemDetails = () => {
+  const { t } = useTranslation();
+  const ns = "jobDetails";
   const { jobStore } = useStores();
   const params = useParams<{ id: string }>();
 
@@ -81,11 +85,11 @@ const JobItemDetails = () => {
           </div>
           <hr />
           <div className="job-desc mb-2">
-            <h1 className="desc-heading">Description</h1>
+            <h1 className="desc-heading">{t("description", { ns })}</h1>
             <p className="line-gap">{jobDescription}</p>
           </div>
-          <a href={companyWebsiteUrl}>Visit</a>
-          <h1>Skills</h1>
+          <a href={companyWebsiteUrl}>{t("visit", { ns })}</a>
+          <h1>{t("skills", { ns })}</h1>
           <ul className="skill-cards-container mb-2">
             {skills?.map((item) => (
               <li className="skill-card flex-row" key={item.name}>
@@ -99,7 +103,7 @@ const JobItemDetails = () => {
             ))}
           </ul>
           <div>
-            <h1>Life at company</h1>
+            <h1>{t("lifeAtCompany", { ns })}</h1>
             <div className="life-at-company">
               <p>{lifeAtCompany?.description}</p>
               <img
@@ -111,7 +115,7 @@ const JobItemDetails = () => {
           </div>
         </li>
         <li>
-          <h1 className="mt-3 mb-0">Similar Jobs</h1>
+          <h1 className="mt-3 mb-0">{t("similarJobs", { ns })}</h1>
           <ul className="similar-job-items-container">
             {similarJobs?.map((item) => (
               <li className="similar-job-item-card" key={item.id}>

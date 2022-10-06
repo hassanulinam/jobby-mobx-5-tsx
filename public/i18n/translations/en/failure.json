@@ -1,0 +1,11 @@
+{
+  "somethingWrong": "Oops! Something Went Wrong",
+  "cannotLoadPage": "We cannot seem to find the page you are looking for",
+  "retry": "Retry",
+
+  "noJobsFound": "No Jobs Found",
+  "couldNotFindJobs": "We could not find any Jobs. Try other filters.",
+
+  "pageNotFound": "Page Not Found",
+  "pageNotFoundDesc": "we're sorry, the page you requested could not be found."
+}
