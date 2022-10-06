@@ -14,13 +14,13 @@ export interface responseData {
 
 class Job {
   id: string;
-  @observable title: string;
-  @observable rating: string;
-  @observable location: string;
-  @observable companyLogoUrl: string;
-  @observable employmentType: string;
-  @observable jobDescription: string;
-  @observable packagePerAnnum: string;
+  @observable title?: string;
+  @observable rating?: string;
+  @observable location?: string;
+  @observable companyLogoUrl?: string;
+  @observable employmentType?: string;
+  @observable jobDescription?: string;
+  @observable packagePerAnnum?: string;
 
   @observable jobDetails: JobDetail | null = null;
   @observable jobDetailsApi = ApiConstType.initial;

@@ -20,18 +20,18 @@ export const employmentTypes = [
 export const salaryRanges = [
   {
     salaryRangeId: "1000000",
-    label: "10 LPA and above",
+    label: "10",
   },
   {
     salaryRangeId: "2000000",
-    label: "20 LPA and above",
+    label: "20",
   },
   {
     salaryRangeId: "3000000",
-    label: "30 LPA and above",
+    label: "30",
   },
   {
     salaryRangeId: "4000000",
-    label: "40 LPA and above",
+    label: "40",
   },
 ];

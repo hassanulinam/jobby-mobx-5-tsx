@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import "./index.css";
 import { observer } from "mobx-react";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Header from "../../components/Header";
 import FailureView from "../../components/FailureView";
 
@@ -16,6 +16,7 @@ const JobItemDetails = () => {
   const { t } = useTranslation();
   const ns = "jobDetails";
   const { jobStore } = useStores();
+  const history = useHistory();
   const params = useParams<{ id: string }>();
 
   const getCurrentJob = () => {
@@ -23,10 +24,13 @@ const JobItemDetails = () => {
     const currJob = jobStore.jobsData.find((job) => job.id === id);
     return currJob;
   };
+  const currentJob = getCurrentJob();
 
   useEffect(() => {
-    const currJob = getCurrentJob();
-    currJob?.getJobDetails();
+    if (currentJob === undefined) {
+      history.push("/");
+    }
+    currentJob?.getJobDetails();
   }, []);
 
   const renderLoadingView = () => (
@@ -36,7 +40,6 @@ const JobItemDetails = () => {
   );
 
   const renderJobDetailsView = () => {
-    const currentJob = getCurrentJob();
     const jobDetails = currentJob?.jobDetails;
     const similarJobs = jobDetails?.similarJobs;
 
@@ -158,7 +161,6 @@ const JobItemDetails = () => {
   };
 
   const renderViewBasedOnApiStatus = () => {
-    const currentJob = getCurrentJob();
     const jobDetailsApi = currentJob?.jobDetailsApi;
 
     switch (jobDetailsApi) {

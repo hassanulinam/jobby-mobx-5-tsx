@@ -6,6 +6,6 @@
     "FREELANCE": "Freelance",
     "INTERNSHIP": "Internship"
   },
-  "salaryRange": "{{count}} and above",
+  "salaryRange": "{{count}}LPA and above",
   "search": "Search"
 }
