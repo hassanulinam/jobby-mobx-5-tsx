@@ -1,14 +1,16 @@
 import { useTranslation } from "react-i18next";
 
 import Header from "../../components/Header";
+import { useStores } from "../../hooks/useStores";
 import "./index.css";
 
 const NotFound = () => {
   const { t } = useTranslation();
+  const { authStore } = useStores();
   const ns = "failure";
   return (
     <div className="not-found-route-container">
-      <Header />
+      <Header onLogout={authStore.onLogout} />
       <div className="not-found-responsive-container">
         <div className="flex-center">
           <img

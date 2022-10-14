@@ -45,7 +45,7 @@ class AuthStore {
     );
   }
 
-  @action
+  @action.bound
   onLogout() {
     deleteAccessToken();
     this.resetStore();
@@ -56,7 +56,7 @@ class AuthStore {
     setAccessToken(token);
   }
 
-  @action
+  @action.bound
   resetStore() {
     this.loginErr = "";
     this.apiStatus = ApiConstType.initial;

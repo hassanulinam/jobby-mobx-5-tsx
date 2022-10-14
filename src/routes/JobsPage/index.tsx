@@ -17,7 +17,7 @@ import JobItem from "../../components/JobItem";
 const Jobs = () => {
   const { t } = useTranslation();
   const ns = "jobFilters";
-  const { jobStore } = useStores();
+  const { jobStore, authStore } = useStores();
 
   useEffect(() => {
     jobStore.getProfileData();
@@ -202,7 +202,7 @@ const Jobs = () => {
 
   return (
     <div className="jobs-route-container">
-      <Header />
+      <Header onLogout={authStore.onLogout} />
       <div className="jobs-route-contents">
         {renderProfileAndFiltersContainer()}
         <div className="jobs-page-container">

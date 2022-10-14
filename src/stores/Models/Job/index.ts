@@ -22,9 +22,9 @@ class Job {
   @observable jobDescription?: string;
   @observable packagePerAnnum?: string;
 
-  @observable jobDetails: JobDetail | null = null;
-  @observable jobDetailsApi = ApiConstType.initial;
-  @observable apiErrors: Error | string = "";
+  @observable jobDetails?: JobDetail | null = null;
+  @observable jobDetailsApi? = ApiConstType.initial;
+  @observable apiErrors?: Error | string = "";
 
   constructor({
     id,

@@ -1,29 +1,30 @@
 import { Link, useHistory } from "react-router-dom";
 import { BsBriefcaseFill } from "react-icons/bs";
 import { IoMdHome, IoMdExit } from "react-icons/io";
-import { useStores } from "../../hooks/useStores";
-import "./index.css";
-import { observer } from "mobx-react";
 import { useClearStores } from "../../hooks/useClearStores";
 import { useTranslation } from "react-i18next";
 import i18n from "i18next";
 import { useState } from "react";
+import "./index.css";
 
 enum Language {
   english = "en",
   telugu = "te",
 }
 
-const Header = () => {
+interface Props {
+  onLogout: () => void;
+}
+
+const Header = ({ onLogout }: Props) => {
   const { t } = useTranslation();
   const ns = "header";
-  const [lng, changeLng] = useState("en");
-  const { authStore } = useStores();
+  const [lng, changeLng] = useState(i18n.language);
   const history = useHistory();
   const clearStores = useClearStores();
 
-  const onLogout = () => {
-    authStore.onLogout();
+  const logout = () => {
+    onLogout();
     clearStores();
     history.replace("/login");
   };
@@ -57,7 +58,7 @@ const Header = () => {
           <button
             type="button"
             className="transparent-btn d-inline d-md-none"
-            onClick={authStore.onLogout}
+            onClick={logout}
           >
             <IoMdExit size="30" color="#ffffff" />
           </button>
@@ -70,7 +71,7 @@ const Header = () => {
           <button
             type="button"
             className="logout-btn d-none d-md-inline"
-            onClick={onLogout}
+            onClick={logout}
           >
             {t("logout", { ns })}
           </button>
@@ -80,4 +81,4 @@ const Header = () => {
   );
 };
 
-export default observer(Header);
+export default Header;

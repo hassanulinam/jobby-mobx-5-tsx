@@ -15,7 +15,7 @@ import FailureView from "../../components/FailureView";
 const JobItemDetails = () => {
   const { t } = useTranslation();
   const ns = "jobDetails";
-  const { jobStore } = useStores();
+  const { jobStore, authStore } = useStores();
   const history = useHistory();
   const params = useParams<{ id: string }>();
 
@@ -177,7 +177,7 @@ const JobItemDetails = () => {
 
   return (
     <div className="job-details-route-container">
-      <Header />
+      <Header onLogout={authStore.onLogout} />
       <div className="job-details-card-wrapper">
         {renderViewBasedOnApiStatus()}
       </div>
