@@ -28,15 +28,12 @@ const Jobs = () => {
   }, [jobStore.salaryRange, jobStore.selectedEmpTypes.length]);
 
   const changeSearchInput = (e: React.FormEvent<HTMLInputElement>) => {
-    runInAction(() => {
-      jobStore.searchKey = e.currentTarget.value;
-    });
+    jobStore.setSearchKey(e.currentTarget.value);
   };
 
   const onChangeSalaryRange = (e: React.FormEvent<HTMLInputElement>) => {
-    runInAction(() => {
-      jobStore.salaryRange = e.currentTarget.value;
-    });
+    console.log("radio change", e.currentTarget.checked);
+    jobStore.setSalaryRange(e.currentTarget.value);
   };
 
   const renderJobTypeFilters = () => {
@@ -49,7 +46,10 @@ const Jobs = () => {
               id={item.employmentTypeId}
               onChange={(e) => jobStore.addOrRemoveJobTypeFilters(e.target.id)}
             />
-            <label htmlFor={item.employmentTypeId}>
+            <label
+              htmlFor={item.employmentTypeId}
+              data-testid={item.employmentTypeId}
+            >
               {t(`employmentType.${item.employmentTypeId}`, { ns })}
             </label>
           </li>
@@ -69,9 +69,10 @@ const Jobs = () => {
               value={item.salaryRangeId}
               name="salaryRange"
               onChange={onChangeSalaryRange}
+              data-testid={item.salaryRangeId}
             />
             <label htmlFor={item.salaryRangeId}>
-              {t("salaryRange", { ns, count: parseInt(item.label) })}
+              {t("salary", { ns, count: parseInt(item.label) })}
             </label>
           </li>
         ))}
@@ -80,7 +81,7 @@ const Jobs = () => {
   };
 
   const renderLoadingView = () => (
-    <div className="loader-container">
+    <div className="loader-container" data-testid="loader-container">
       <ThreeDots color="#ffffff" height="80" width="80" />
     </div>
   );
@@ -95,11 +96,13 @@ const Jobs = () => {
           placeholder={t("search", { ns })}
           onChange={changeSearchInput}
           className="search-input"
+          data-testid="search-input"
         />
         <button
           type="button"
           onClick={jobStore.getJobsData}
           className="search-btn"
+          data-testid="search-btn"
         >
           <BsSearch className="search-icon" color="#ffffff" size="20" />
         </button>
@@ -194,7 +197,7 @@ const Jobs = () => {
       </div>
       <hr />
       <div className="salary-range-filters-container">
-        <h1 className="filters-heading">Salary Range</h1>
+        <h1 className="filters-heading">{t("salaryRange", { ns })}</h1>
         {renderSalaryRangeFilters()}
       </div>
     </div>

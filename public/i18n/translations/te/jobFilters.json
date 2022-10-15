@@ -6,6 +6,7 @@
     "FREELANCE": "ఫ్రీలాన్స్",
     "INTERNSHIP": "ఇంటర్న్"
   },
-  "salaryRange": "{{count}}LPA మరియు పైన",
+  "salaryRange": "జీతం పరిధి",
+  "salary": "{{count}}LPA మరియు పైన",
   "search": "శోధించండి"
 }
