@@ -4,7 +4,6 @@ import { useStores } from "../../hooks/useStores";
 import { employmentTypes, salaryRanges } from "../../constants/filtersData";
 import { BsSearch } from "react-icons/bs";
 import ApiConstType from "../../constants/apiConst";
-import { runInAction } from "mobx";
 import { useEffect } from "react";
 import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
