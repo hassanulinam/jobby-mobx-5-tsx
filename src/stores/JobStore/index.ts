@@ -17,6 +17,15 @@ class JobStore {
   @observable apiErrors: Error | string = "";
 
   // ========== Jobs api ===================
+
+  @action.bound
+  setSalaryRange(salaryRange: string) {
+    this.salaryRange = salaryRange;
+  }
+  @action.bound
+  setSearchKey(searchKey: string) {
+    this.searchKey = searchKey;
+  }
   @action.bound
   setJobsApiStatus(status: ApiConstType) {
     this.jobsApiStatus = status;
@@ -42,11 +51,10 @@ class JobStore {
   @action.bound
   async getJobsData() {
     this.setJobsApiStatus(ApiConstType.inProgress);
-    const { selectedEmpTypes, salaryRange, searchKey } = this;
     const queryParams = [];
-    queryParams.push(`employment_type=${selectedEmpTypes.join(",")}`);
-    queryParams.push(`minimum_package=${salaryRange}`);
-    queryParams.push(`search=${searchKey}`);
+    queryParams.push(`employment_type=${this.selectedEmpTypes.join(",")}`);
+    queryParams.push(`minimum_package=${this.salaryRange}`);
+    queryParams.push(`search=${this.searchKey}`);
 
     const url = `https://apis.ccbp.in/jobs?${queryParams.join("&")}`;
     const options = getFetchOptions();
@@ -59,7 +67,7 @@ class JobStore {
   }
 
   // ======== Profile api ==============
-  @action
+  @action.bound
   setProfileApiStatus(status: ApiConstType) {
     this.profileApiStatus = status;
   }
@@ -100,7 +108,7 @@ class JobStore {
 
   //=================
 
-  @action
+  @action.bound
   addOrRemoveJobTypeFilters(jobType: string) {
     if (this.selectedEmpTypes.includes(jobType)) {
       this.selectedEmpTypes = this.selectedEmpTypes.filter(
@@ -109,7 +117,7 @@ class JobStore {
     } else this.selectedEmpTypes.push(jobType);
   }
 
-  @action
+  @action.bound
   resetStore() {
     this.jobsApiStatus = ApiConstType.initial;
     this.profileApiStatus = ApiConstType.initial;

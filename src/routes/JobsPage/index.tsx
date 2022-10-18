@@ -4,16 +4,19 @@ import { useStores } from "../../hooks/useStores";
 import { employmentTypes, salaryRanges } from "../../constants/filtersData";
 import { BsSearch } from "react-icons/bs";
 import ApiConstType from "../../constants/apiConst";
-import { runInAction } from "mobx";
 import { useEffect } from "react";
 import { observer } from "mobx-react";
+import { useTranslation } from "react-i18next";
+
 import "./index.css";
 import FailureView from "../../components/FailureView";
 import Header from "../../components/Header";
 import JobItem from "../../components/JobItem";
 
 const Jobs = () => {
-  const { jobStore } = useStores();
+  const { t } = useTranslation();
+  const ns = "jobFilters";
+  const { jobStore, authStore } = useStores();
 
   useEffect(() => {
     jobStore.getProfileData();
@@ -24,15 +27,12 @@ const Jobs = () => {
   }, [jobStore.salaryRange, jobStore.selectedEmpTypes.length]);
 
   const changeSearchInput = (e: React.FormEvent<HTMLInputElement>) => {
-    runInAction(() => {
-      jobStore.searchKey = e.currentTarget.value;
-    });
+    jobStore.setSearchKey(e.currentTarget.value);
   };
 
   const onChangeSalaryRange = (e: React.FormEvent<HTMLInputElement>) => {
-    runInAction(() => {
-      jobStore.salaryRange = e.currentTarget.value;
-    });
+    console.log("radio change", e.currentTarget.checked);
+    jobStore.setSalaryRange(e.currentTarget.value);
   };
 
   const renderJobTypeFilters = () => {
@@ -45,7 +45,12 @@ const Jobs = () => {
               id={item.employmentTypeId}
               onChange={(e) => jobStore.addOrRemoveJobTypeFilters(e.target.id)}
             />
-            <label htmlFor={item.employmentTypeId}>{item.label}</label>
+            <label
+              htmlFor={item.employmentTypeId}
+              data-testid={item.employmentTypeId}
+            >
+              {t(`employmentType.${item.employmentTypeId}`, { ns })}
+            </label>
           </li>
         ))}
       </ul>
@@ -63,8 +68,11 @@ const Jobs = () => {
               value={item.salaryRangeId}
               name="salaryRange"
               onChange={onChangeSalaryRange}
+              data-testid={item.salaryRangeId}
             />
-            <label htmlFor={item.salaryRangeId}>{item.label}</label>
+            <label htmlFor={item.salaryRangeId}>
+              {t("salary", { ns, count: parseInt(item.label) })}
+            </label>
           </li>
         ))}
       </ul>
@@ -72,7 +80,7 @@ const Jobs = () => {
   };
 
   const renderLoadingView = () => (
-    <div className="loader-container">
+    <div className="loader-container" data-testid="loader-container">
       <ThreeDots color="#ffffff" height="80" width="80" />
     </div>
   );
@@ -84,14 +92,16 @@ const Jobs = () => {
         <input
           type="search"
           value={searchKey}
-          placeholder="Search"
+          placeholder={t("search", { ns })}
           onChange={changeSearchInput}
           className="search-input"
+          data-testid="search-input"
         />
         <button
           type="button"
           onClick={jobStore.getJobsData}
           className="search-btn"
+          data-testid="search-btn"
         >
           <BsSearch className="search-icon" color="#ffffff" size="20" />
         </button>
@@ -116,8 +126,8 @@ const Jobs = () => {
           src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png"
           className="no-jobs-img"
         />
-        <h1>No Jobs Found</h1>
-        <p>We could not find any Jobs. Try other filters.</p>
+        <h1>{t("noJobsFound", { ns: "failure" })}</h1>
+        <p>{t("couldNotFindJobs", { ns: "failure" })}</p>
       </div>
     );
   };
@@ -181,12 +191,12 @@ const Jobs = () => {
       {renderProfileCard()}
       <hr />
       <div className="jobs-filters-container">
-        <h1 className="filters-heading">Type of Employment</h1>
+        <h1 className="filters-heading">{t("typeOfEmployment", { ns })}</h1>
         {renderJobTypeFilters()}
       </div>
       <hr />
       <div className="salary-range-filters-container">
-        <h1 className="filters-heading">Salary Range</h1>
+        <h1 className="filters-heading">{t("salaryRange", { ns })}</h1>
         {renderSalaryRangeFilters()}
       </div>
     </div>
@@ -194,7 +204,7 @@ const Jobs = () => {
 
   return (
     <div className="jobs-route-container">
-      <Header />
+      <Header onLogout={authStore.onLogout} />
       <div className="jobs-route-contents">
         {renderProfileAndFiltersContainer()}
         <div className="jobs-page-container">

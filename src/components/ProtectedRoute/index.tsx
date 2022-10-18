@@ -4,7 +4,15 @@ import { getAccessToken } from "../../utils/accessToken";
 
 const ProtectedRoute = (props: RouteProps) => {
   const accessToken = getAccessToken();
-  if (accessToken === undefined) return <Redirect to="/login" />;
+  if (accessToken === undefined)
+    return (
+      <Redirect
+        to={{
+          pathname: "/login",
+          state: { referrer: props.location?.pathname },
+        }}
+      />
+    );
   return <Route {...props} />;
 };
 

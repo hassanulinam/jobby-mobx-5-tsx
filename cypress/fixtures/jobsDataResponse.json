@@ -1,0 +1,105 @@
+{
+  "jobs": [
+    {
+      "id": "5ecd5a9b-4805-4924-8f26-551302326b27",
+      "title": "ML Engineer",
+      "rating": 4,
+      "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/amazon-img.png",
+      "location": "Bangalore",
+      "job_description": "We’re looking for a scientist who can define the next generation of FMA ML-based ranking, pricing, and econometric models to further improve customer experience and customer trust on Amazon. This scientist will work with tech and business teams within and outside of FMA to think outside the box and design innovative solutions.",
+      "employment_type": "Internship",
+      "package_per_annum": "12 LPA"
+    },
+    {
+      "id": "0f080434-4287-4f49-9107-88227e0ddd75",
+      "title": "ML Engineer",
+      "rating": 4,
+      "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/flipkart-img.png",
+      "location": "Chennai",
+      "job_description": "As an ML Engineer, you will be evaluating existing machine learning (ML) processes, performing statistical analysis to resolve data set problems, and enhancing the accuracy of our AI software's predictive automation capabilities. To ensure success as a machine learning engineer, you should demonstrate solid data science knowledge and experience in a related ML role, transforming data science prototypes and applying appropriate ML algorithms and tools.",
+      "employment_type": "Full Time",
+      "package_per_annum": "25 LPA"
+    },
+    {
+      "id": "811c3f5e-4688-4781-90be-87c4b98b39a4",
+      "title": "ML Engineer",
+      "rating": 5,
+      "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/google-img.png",
+      "location": "Chennai",
+      "job_description": "As an ML Engineer, you will get a chance to choose from a myriad of projects: building signals and models for detecting bad users and rejecting fraudulent and abusive contributions, building tools that allow Google operators to efficiently provide labels for model training and the infrastructure on which all of these run. ",
+      "employment_type": "Internship",
+      "package_per_annum": "13 LPA"
+    },
+    {
+      "id": "32f85617-1f00-47c9-80a7-b20c04aadcf6",
+      "title": "ML Engineer",
+      "rating": 4,
+      "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/zomato-img.png",
+      "location": "Mumbai",
+      "job_description": "As a Machine Learning engineer at Zomato, you will be working on a number of interesting problems across a wide range of use cases, like restaurant recommendations, identifying and controlling spam/biased reviews, mining useful insights from reviews, classifying user photos, and even restaurant search ranking – things aimed at improving the customer experience and the product overall. As a key member of our engineering team, you will contribute to all aspects of the software life cycle design, implementation, testing, experimentation, and fixing any bugs you create. We’re looking for someone who is willing to dive deep, experiment and iterate rapidly, and get things done.",
+      "employment_type": "Part Time",
+      "package_per_annum": "24 LPA"
+    },
+    {
+      "id": "fd985d0b-0f0b-40a5-81c9-5c8989180a1e",
+      "title": "ML Engineer",
+      "rating": 5,
+      "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/zomato-img.png",
+      "location": "Bangalore",
+      "job_description": "As a Machine Learning engineer at Zomato, you will be working on a number of interesting problems across a wide range of use cases, like restaurant recommendations, identifying and controlling spam/biased reviews, mining useful insights from reviews, classifying user photos, and even restaurant search ranking – things aimed at improving the customer experience and the product overall. As a key member of our engineering team, you will contribute to all aspects of the software life cycle design, implementation, testing, experimentation, and fixing any bugs you create. We’re looking for someone who is willing to dive deep, experiment and iterate rapidly, and get things done.",
+      "employment_type": "Part Time",
+      "package_per_annum": "18 LPA"
+    },
+    {
+      "id": "e5c175d7-9710-4971-b207-24b9967fc374",
+      "title": "ML Engineer",
+      "rating": 5,
+      "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/zomato-img.png",
+      "location": "Chennai",
+      "job_description": "As a Machine Learning engineer at Zomato, you will be working on a number of interesting problems across a wide range of use cases, like restaurant recommendations, identifying and controlling spam/biased reviews, mining useful insights from reviews, classifying user photos, and even restaurant search ranking – things aimed at improving the customer experience and the product overall. As a key member of our engineering team, you will contribute to all aspects of the software life cycle design, implementation, testing, experimentation, and fixing any bugs you create. We’re looking for someone who is willing to dive deep, experiment and iterate rapidly, and get things done.",
+      "employment_type": "Internship",
+      "package_per_annum": "14 LPA"
+    },
+    {
+      "id": "ededc9c4-f0b6-4044-b1a2-7a1c6f830064",
+      "title": "ML Engineer",
+      "rating": 5,
+      "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/facebook-img.png",
+      "location": "Hyderabad",
+      "job_description": "As an ML Engineer, you have to develop highly scalable classifiers and tools leveraging machine learning, data regression, and rules-based models  and you have to suggest, collect and synthesize requirements and create an effective feature roadmap and adapt standard machine learning methods to best exploit modern parallel environments (e.g. distributed clusters, multicore SMP, and GPU)",
+      "employment_type": "Full Time",
+      "package_per_annum": "25 LPA"
+    },
+    {
+      "id": "01ff7185-fef9-4e87-8f15-9d6b6a9b4dcd",
+      "title": "ML Engineer",
+      "rating": 4,
+      "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/swiggy-img.png",
+      "location": "Bangalore",
+      "job_description": "As an ML Engineer, you serve as the bridge between the data scientists and software engineers in product and platform teams. Build, enhance and maintain tooling, capabilities, and processes to speed up and streamline the data science lifecycle. Enable efficient deployment, monitoring, and debugging of production ML models. Work with the data science team to enable robust decision-making in terms of thinking about scale, latency, throughput, and compute cost requirements and contribute to the development of data products and services.",
+      "employment_type": "Full Time",
+      "package_per_annum": "27 LPA"
+    },
+    {
+      "id": "dd8faa3b-1793-4409-bb93-78e7ae320a00",
+      "title": "ML Engineer",
+      "rating": 4,
+      "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/flipkart-img.png",
+      "location": "Chennai",
+      "job_description": "As an ML Engineer, you will be evaluating existing machine learning (ML) processes, performing statistical analysis to resolve data set problems, and enhancing the accuracy of our AI software's predictive automation capabilities. To ensure success as a machine learning engineer, you should demonstrate solid data science knowledge and experience in a related ML role, transforming data science prototypes and applying appropriate ML algorithms and tools.",
+      "employment_type": "Internship",
+      "package_per_annum": "13 LPA"
+    },
+    {
+      "id": "6bd26015-6df2-44c4-9e91-444bfbacdfd2",
+      "title": "ML Engineer",
+      "rating": 4,
+      "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/netflix-img.png",
+      "location": "Delhi",
+      "job_description": "As an ML Engineer, you will help define and execute the strategy and vision for enabling standard and novel experimentation practices at Netflix, including model training, ensembling and pipeline componentization, hyperparameter optimization, feature selection, and engineering, model reuse, model evaluation/validation, performance profiling, and optimization. You will build systems, infrastructure, and libraries to provide a robust and transparent platform for experimentation at scale, aiming to consistently deliver “member joy” to our platform customers. You will work within the larger Machine Learning Platform org and the applied ML research community at Netflix to set the forward-looking direction for nascent platform areas of investment like AutoML and ML Performance.",
+      "employment_type": "Part Time",
+      "package_per_annum": "26 LPA"
+    }
+  ],
+  "total": 10
+}

@@ -58,7 +58,7 @@ const JobItem = ({ details }: Props) => {
             <p className="job-title">{packagePerAnnum}</p>
           </div>
         </div>
-        <hr />
+        <hr data-testid="horizontal-rule" />
         <div className="job-desc">
           <h1 className="job-desc-heading">Description</h1>
           <p className="line-gap">{jobDescription}</p>
