@@ -35,3 +35,46 @@
 //     }
 //   }
 // }
+
+import loginResponse from "../fixtures/loginResponse.json";
+import profileResponse from "../fixtures/profileResponse.json";
+import jobsDataResponse from "../fixtures/jobsDataResponse.json";
+
+Cypress.Commands.addAll({
+  interceptLoginApi() {
+    cy.intercept(
+      { method: "POST", url: "https://apis.ccbp.in/login" },
+      loginResponse
+    ).as("userLogin");
+  },
+
+  interceptProfileApi() {
+    cy.intercept(
+      { method: "GET", url: "https://apis.ccbp.in/profile" },
+      profileResponse
+    ).as("profileApi");
+  },
+
+  interceptJobsDataApi() {
+    cy.intercept(
+      { method: "GET", url: "https://apis.ccbp.in/jobs" },
+      jobsDataResponse
+    );
+  },
+
+  login() {
+    cy.get("#usernameInput")
+      .type("praneetha")
+      .should("have.value", "praneetha");
+    cy.get("#passwordInput")
+      .type("praneetha@2021")
+      .should("have.value", "praneetha@2021");
+
+    cy.contains("Login").click();
+  },
+
+  logout() {
+    cy.clearCookie("jwt_token");
+    cy.visit("/login");
+  },
+});

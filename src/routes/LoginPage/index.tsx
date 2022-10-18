@@ -7,11 +7,12 @@ import { useStores } from "../../hooks/useStores";
 import { getAccessToken } from "../../utils/accessToken";
 import "./index.css";
 
-const Login = () => {
+const Login = (props: any) => {
   const { t } = useTranslation();
   const ns = "login";
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState("");
+  const [referrerLocation] = useState<any>(props.location?.state?.referrer);
 
   const { authStore } = useStores();
   const history = useHistory();
@@ -26,7 +27,7 @@ const Login = () => {
   const onLogin = (e: React.SyntheticEvent) => {
     e.preventDefault();
     authStore.onLogin({ username, password }, () => {
-      history.replace("/");
+      history.replace(referrerLocation);
     });
   };
 
@@ -66,7 +67,7 @@ const Login = () => {
   );
 
   const accessToken = getAccessToken();
-  if (accessToken !== undefined) return <Redirect to="/" />;
+  if (accessToken !== undefined) return <Redirect to={referrerLocation} />;
   return <div className="login-route-container">{renderForm()}</div>;
 };
 

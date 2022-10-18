@@ -62,7 +62,7 @@ const Header = ({ onLogout }: Props) => {
           >
             <IoMdExit size="30" color="#ffffff" />
           </button>
-          <select value={lng} onChange={onChangeLng}>
+          <select value={lng} onChange={onChangeLng} data-cy="change-lang">
             <option value={Language.english}>English</option>
             <option value={Language.telugu}>Telugu</option>
           </select>

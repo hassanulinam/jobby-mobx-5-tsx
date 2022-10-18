@@ -13,7 +13,9 @@ const Home = () => {
       <Header onLogout={authStore.onLogout} />
 
       <div className="home-container">
-        <h1 className="home-heading">{t("bannerHeading", { ns })}</h1>
+        <h1 className="home-heading" data-cy="home-title">
+          {t("bannerHeading", { ns })}
+        </h1>
         <p className="home-text">{t("bannerDescription", { ns })}</p>
         <Link to="/jobs">
           <button type="button" className="find-jobs-btn">
