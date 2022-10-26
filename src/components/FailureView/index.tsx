@@ -17,7 +17,7 @@ const FailureView = ({ retryMethod }: Props) => {
       />
       <h1 className="mt-3">{t("somethingWrong", { ns, lng: "te" })}</h1>
       <p className="mb-2">{t("cannotLoadPage", { ns })}</p>
-      <button type="button" className="retry-btn" onClick={() => retryMethod()}>
+      <button type="button" className="retry-btn" onClick={retryMethod}>
         {t("retry", { ns })}
       </button>
     </div>
